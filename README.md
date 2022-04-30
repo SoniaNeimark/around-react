@@ -16,4 +16,4 @@ The project is created by using __HTML__,  __CSS__ and __JavaScript__. Its struc
 
 ## Link
 
-https://sonianeimark.github.io/Around-the-U.S./
+https://sonianeimark.github.io/around-react/
