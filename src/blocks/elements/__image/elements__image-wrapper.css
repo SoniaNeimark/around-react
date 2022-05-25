@@ -3,7 +3,6 @@
   object-fit: cover;
   width: 282px;
   height: 282px;
-  object-fit: cover;
   grid-area: elements__image;
   grid-column: 1 / span 2;
 }
