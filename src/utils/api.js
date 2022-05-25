@@ -88,6 +88,8 @@ class Api {
     })
     .then(this._checkResponse)
   }
+
+ 
 }
 
 const apiOptions = {

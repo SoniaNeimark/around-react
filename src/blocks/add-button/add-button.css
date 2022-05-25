@@ -15,7 +15,7 @@
 
 @media screen and (min-width: 624px) {
   .add-button {
-    grid-area: add-button;
+    /*grid-area: add-button;*/
     width: 150px;
     justify-self: right;
     align-self: center;

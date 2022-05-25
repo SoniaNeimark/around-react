@@ -1,6 +1,7 @@
 @import url(../src/vendor/normalize.css);
 @import url(../src/fonts/fonts.css);
 @import url(../src/blocks/page/page.css);
+@import url(../src/blocks/loading/loading.css);
 @import url(../src/blocks/page/__content/page__content.css);
 @import url(../src/blocks/header/header.css);
 @import url(../src/blocks/logo/logo.css);
@@ -15,6 +16,7 @@
 @import url(../src/blocks/edit-button/edit-button.css);
 @import url(../src/blocks/hover-opacity/hover-opacity.css);
 @import url(../src/blocks/profile/__profession/profile__profession.css);
+@import url(../src/blocks/add-button-wrapper.css);
 @import url(../src/blocks/add-button/add-button.css);
 @import url(../src/blocks/popup-box/popup-box.css);
 @import url(../src/blocks/popup-box/_opened/popup-box_opened.css);
@@ -37,6 +39,7 @@
 @import url(../src/blocks/elements/elements.css);
 @import url(../src/blocks/elements/__cards/elements__cards.css);
 @import url(../src/blocks/elements/__card/elements__card.css);
+@import url(../src/blocks/elements/__image/elements__image-wrapper.css);
 @import url(../src/blocks/elements/__image/elements__image.css);
 @import url(../src/blocks/elements/__title/elements__title.css);
 @import url(../src/blocks/elements/__name/elements__name.css);
