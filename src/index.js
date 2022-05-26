@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom'
-import { Routes, Route } from 'react-router-dom';
 import { ComponentsPathsContext, componentsPaths } from './contexts/ComponentsPathsContext.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +12,7 @@ root.render(
     <BrowserRouter>
     <ComponentsPathsContext.Provider value={componentsPaths}>
       <Routes>
+        <Route path={componentsPaths.home} element={<App />}/>
         <Route path={`${componentsPaths.home}*`} element={<App />}/>
       </Routes>
       </ComponentsPathsContext.Provider>

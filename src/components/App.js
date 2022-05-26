@@ -235,8 +235,6 @@ function App() {
             handleCardDelete={handleCardDelete}
             isOpen={isAlertPopupOpen}
             selectedCard={selectedCard}
-
-
             />
             }
           />
