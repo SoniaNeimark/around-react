@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/around-react/static/css/main.b7ff8424.css",
-    "main.js": "/around-react/static/js/main.2afe56a4.js",
+    "main.js": "/around-react/static/js/main.cda10d6f.js",
     "static/js/787.1c78f32b.chunk.js": "/around-react/static/js/787.1c78f32b.chunk.js",
     "static/media/Inter-Black.woff": "/around-react/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/around-react/static/media/Inter-Regular.8c206db99195777c6769.woff",
@@ -16,11 +16,11 @@
     "static/media/edit.svg": "/around-react/static/media/edit.8667ac4a523e8fc42e59.svg",
     "static/media/add_close.svg": "/around-react/static/media/add_close.bed8c136e13907f5eefb.svg",
     "main.b7ff8424.css.map": "/around-react/static/css/main.b7ff8424.css.map",
-    "main.2afe56a4.js.map": "/around-react/static/js/main.2afe56a4.js.map",
+    "main.cda10d6f.js.map": "/around-react/static/js/main.cda10d6f.js.map",
     "787.1c78f32b.chunk.js.map": "/around-react/static/js/787.1c78f32b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b7ff8424.css",
-    "static/js/main.2afe56a4.js"
+    "static/js/main.cda10d6f.js"
   ]
 }
