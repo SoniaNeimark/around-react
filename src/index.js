@@ -12,7 +12,7 @@ root.render(
     <BrowserRouter>
     <ComponentsPathsContext.Provider value={componentsPaths}>
       <Routes>
-        <Route path={`${componentsPaths.home}*`} element={<App />}/>
+        <Route path={componentsPaths.home} element={<App />}/>
       </Routes>
       </ComponentsPathsContext.Provider>
     </BrowserRouter>
