@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ComponentsPathsContext = React.createContext();
 export const componentsPaths = {
-  home: '/',
+  home: '/around-react',
   avatar: 'edit-avatar',
   profile: 'edit-profile',
   add: 'add-place',

@@ -25,7 +25,7 @@ function Card(props) {
   return (
     <li className='elements__card'>
       <div className='elements__image-wrapper'>
-        <Link to={`${componentsPaths.home}${props.id}`}>
+        <Link to={props.id}>
           <img
             className='elements__image hover-opacity open-popup'
             onClick={handleImageClick}

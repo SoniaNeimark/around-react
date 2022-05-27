@@ -91,7 +91,7 @@ function App() {
       resetForm(formName);
     }
     setFormName()
-    navigate('/')
+    navigate(componentsPaths.home)
   };
 
   function isInvalid(evt) {
@@ -243,7 +243,7 @@ function App() {
               />
               }
             />
-            <Route path={`${componentsPaths.home}/${cardIndex}`} element={
+            <Route path={cardIndex} element={
               <ImagePopup
                 isOpen={isImagePopupOpen}
                 src={selectedCard.src}
