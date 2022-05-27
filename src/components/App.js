@@ -15,6 +15,8 @@ import AddPlacePopup from './AddPlacePopup.js';
 import AlertPopup from './AlertPopup.js';
 
 function App() {
+  const body = document.querySelector('body')
+
   const [currentUser, setCurrentUser] = React.useState();
   const [cards, setCards] = React.useState([]);
   const [cardIndex, setCardIndex] = React.useState()
@@ -37,6 +39,10 @@ function App() {
     isInvalid: isInvalid,
     onUpdateUser: handleUpdateUser,
   }
+
+  React.useEffect(() => {
+    body && body.classList.add('page')
+  }, [body])
 
   React.useEffect(() => {
     api.getUserData()
@@ -183,71 +189,71 @@ function App() {
     return (
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentPropsContext.Provider value={currentProps}>
-      <div className='page__content'>
-        <Header />
-        <Main
-          setIsEditProfilePopupOpen={handleEditProfileClick}
-          setIsAddPlacePopupOpen={handleAddPlaceClick}
-          setIsEditAvatarPopupOpen={handleEditAvatarClick}
-          setIsImagePopupOpen={handleCardClick}
-          setIsAlertPopupOpen={handleDeleteCardClick}
-          cards={cards}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-          setCardIndex={setCardIndex}
-          setSelectedCard={setSelectedCard}
-          selectedCard={selectedCard}
-        />
-        <Footer />
-        <Routes>
-          <Route path={componentsPaths.avatar} element={
-            <CurrentFormContext.Provider value={currentForms.avatar}>
-              <EditAvatarPopup
-                isOpen={isEditAvatarPopupOpen}
-                onUpdateAvatar={handleUpdateAvatar}
-              />
-            </CurrentFormContext.Provider>
-            }
-          />
-          <Route path={componentsPaths.profile} element={
-            <CurrentFormContext.Provider value={currentForms.profile}>
-              <EditProfilePopup
-                isOpen={isEditProfilePopupOpen}
-                onUpdateUser={handleUpdateUser}
-              />
-            </CurrentFormContext.Provider>
-            }
-          />
-          <Route path={componentsPaths.add} element={
-            <CurrentFormContext.Provider value={currentForms.add}>
-              <AddPlacePopup
-                isOpen={isAddPlacePopupOpen}
-                onAddCard={handleAddPlaceSubmit}
-              />
-            </CurrentFormContext.Provider>
-            }
-          />
-          <Route path={componentsPaths.alert} element={
-            <AlertPopup
-            key='alert'
-            name='alert'
-            onClose={closeAllPopups}
-            handleCardDelete={handleCardDelete}
-            isOpen={isAlertPopupOpen}
+        <div className='page__content'>
+          <Header />
+          <Main
+            setIsEditProfilePopupOpen={handleEditProfileClick}
+            setIsAddPlacePopupOpen={handleAddPlaceClick}
+            setIsEditAvatarPopupOpen={handleEditAvatarClick}
+            setIsImagePopupOpen={handleCardClick}
+            setIsAlertPopupOpen={handleDeleteCardClick}
+            cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
+            setCardIndex={setCardIndex}
+            setSelectedCard={setSelectedCard}
             selectedCard={selectedCard}
-            />
-            }
           />
-          <Route path={`${componentsPaths.home}/${cardIndex}`} element={
-            <ImagePopup
-              isOpen={isImagePopupOpen}
-              src={selectedCard.src}
-              alt={selectedCard.alt}
+          <Routes>
+            <Route path={componentsPaths.avatar} element={
+              <CurrentFormContext.Provider value={currentForms.avatar}>
+                <EditAvatarPopup
+                  isOpen={isEditAvatarPopupOpen}
+                  onUpdateAvatar={handleUpdateAvatar}
+                />
+              </CurrentFormContext.Provider>
+              }
             />
-            }
-          />
-        </Routes>
-      </div>
+            <Route path={componentsPaths.profile} element={
+              <CurrentFormContext.Provider value={currentForms.profile}>
+                <EditProfilePopup
+                  isOpen={isEditProfilePopupOpen}
+                  onUpdateUser={handleUpdateUser}
+                />
+              </CurrentFormContext.Provider>
+              }
+            />
+            <Route path={componentsPaths.add} element={
+              <CurrentFormContext.Provider value={currentForms.add}>
+                <AddPlacePopup
+                  isOpen={isAddPlacePopupOpen}
+                  onAddCard={handleAddPlaceSubmit}
+                />
+              </CurrentFormContext.Provider>
+              }
+            />
+            <Route path={componentsPaths.alert} element={
+              <AlertPopup
+              key='alert'
+              name='alert'
+              onClose={closeAllPopups}
+              handleCardDelete={handleCardDelete}
+              isOpen={isAlertPopupOpen}
+              selectedCard={selectedCard}
+              />
+              }
+            />
+            <Route path={`${componentsPaths.home}/${cardIndex}`} element={
+              <ImagePopup
+                isOpen={isImagePopupOpen}
+                src={selectedCard.src}
+                alt={selectedCard.alt}
+              />
+              }
+            />
+          </Routes>
+          <Footer />
+        </div>
       </CurrentPropsContext.Provider>
     </CurrentUserContext.Provider>
     );

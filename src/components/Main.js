@@ -48,10 +48,10 @@ function Main(props) {
           </div>
           <p className='profile__profession'>{currentUser.about}</p>
         </div>
-        <div className='add-button-wrapper'>
+        <div className='profile__add-button-wrapper'>
         <Link to={componentsPaths.add}>
           <button
-            className='add-button hover-opacity open-popup'
+            className='profile__add-button hover-opacity open-popup'
             type='button'
             onClick={() => props.setIsAddPlacePopupOpen()}>
           </button>

@@ -15,15 +15,11 @@
     grid-area: profile__image;
     grid-row: 1 / span 3;
   }
-
 }
 
 .profile__image:hover + .profile__avatar-edit {
-  /*visibility: visible;*/
-
   visibility: visible;
   opacity: 1;
-  pointer-events: visible;
   user-select: auto;
   transition: visibility 0s linear 0s, opacity linear .4s;
 }

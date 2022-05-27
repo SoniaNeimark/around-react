@@ -12,10 +12,8 @@
   right: 0;
   bottom: 0;
   z-index: 2;
-
   visibility: visible;
   opacity: 1;
-  pointer-events: visible;
   user-select: auto;
   transition: visibility 0s linear 0s, opacity linear 4s;
 }

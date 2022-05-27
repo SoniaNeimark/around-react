@@ -1,4 +1,4 @@
-.add-button-wrapper {
+.profile__add-button-wrapper {
   display: flex;
   width: calc(100% - 19px * 2);
   max-width: 282px;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (min-width: 624px) {
-  .add-button-wrapper {
+  .profile__add-button-wrapper {
     grid-area: add-button;
     width: 150px;
     justify-self: right;
@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 319px) {
-  .add-button-wrapper {
+  .profile__add-button-wrapper {
     width: 100%;
   }
 }
