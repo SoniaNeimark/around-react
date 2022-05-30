@@ -13,6 +13,7 @@ import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
 import AlertPopup from './AlertPopup.js';
+import Loading from './Loading.js';
 
 function App() {
   const body = document.querySelector('body')
@@ -259,7 +260,7 @@ function App() {
     );
   } else {
     return (
-      <h1 className='loading'>Loading...</h1>
+      <Loading />
     );
   }
 };
