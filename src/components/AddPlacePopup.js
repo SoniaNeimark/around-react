@@ -13,7 +13,7 @@ function AddPlacePopup(props) {
   }, [cardTitle, cardLink]);
 
   function handleSubmit() {
-		props.onAddCard({name: cardTitle, link: cardLink});
+		props.onAddCard({ name: cardTitle, link: cardLink });
 	};
 
   function onTitleChange(evt) {
