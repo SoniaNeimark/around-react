@@ -14,12 +14,10 @@
   .popup-box__container {
     width: 430px;
   }
-
 }
 
 @media screen and (max-width: 320px) {
   .popup-box__container {
    max-width: 95%;
   }
-
 }

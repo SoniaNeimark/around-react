@@ -88,6 +88,8 @@ class Api {
     })
     .then(this._checkResponse)
   }
+
+
 }
 
 const apiOptions = {
@@ -98,5 +100,5 @@ const apiOptions = {
   }
 }
 
-export const api = new Api(apiOptions)
-  
+const api = new Api(apiOptions)
+export default api
