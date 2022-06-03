@@ -2,6 +2,9 @@
     width: 26px;
     height: 26px;
     transform: translate(50%, calc(-100% - 13px)) rotate(45deg);
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -10,6 +13,7 @@
     background-repeat: no-repeat;
     box-sizing: border-box;
     padding: 0;
+    /*object-fit: contain;*/
   }
 
   @media screen and (min-width: 1024px) {

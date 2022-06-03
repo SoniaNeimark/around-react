@@ -7,10 +7,12 @@
   .page__content {
     width: 584px;
   }
+
 }
 
 @media screen and (min-width: 1024px) {
   .page__content {
     width: 880px;
   }
+
 }

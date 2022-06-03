@@ -12,8 +12,10 @@
   right: 0;
   bottom: 0;
   z-index: 2;
+
   visibility: hidden;
   opacity: 0;
+  pointer-events: none;
   user-select: none;
-  transition: visibility 0s linear 400ms, opacity linear 4s;
+  transition: visibility 0s linear 400ms, opacity linear .4s;
 }
