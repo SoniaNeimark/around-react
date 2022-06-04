@@ -16,7 +16,7 @@ import AlertPopup from './AlertPopup.js';
 import Loading from './Loading.js';
 
 function App() {
-  const body = document.querySelector('body')
+  //const body = document.querySelector('body')
 
   const [currentUser, setCurrentUser] = React.useState();
   const [cards, setCards] = React.useState([]);
@@ -41,9 +41,9 @@ function App() {
     onUpdateUser: handleUpdateUser,
   }
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     body && body.classList.add('page')
-  }, [body])
+  }, [body])*/
 
   React.useEffect(() => {
     api.getUserData()
