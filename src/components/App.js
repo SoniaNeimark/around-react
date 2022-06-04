@@ -16,8 +16,6 @@ import AlertPopup from './AlertPopup.js';
 import Loading from './Loading.js';
 
 function App() {
-  //const body = document.querySelector('body')
-
   const [currentUser, setCurrentUser] = React.useState();
   const [cards, setCards] = React.useState([]);
   const [cardIndex, setCardIndex] = React.useState()
@@ -40,10 +38,6 @@ function App() {
     isInvalid: isInvalid,
     onUpdateUser: handleUpdateUser,
   }
-
-  /*React.useEffect(() => {
-    body && body.classList.add('page')
-  }, [body])*/
 
   React.useEffect(() => {
     api.getUserData()
