@@ -21,7 +21,11 @@ function ImagePopup(props) {
           type='button'
           onClick={() => currentProps.onClose()}
         ></button>
-        <img className='popup-box__image' src={props.src} alt={props.alt} />
+        <img
+          className='popup-box__image'
+          src={props.src}
+          alt={props.alt}
+        />
         <p className='popup-box__subtitle'>{props.alt}</p>
       </div>
     </div>

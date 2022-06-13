@@ -15,5 +15,5 @@
   visibility: hidden;
   opacity: 0;
   user-select: none;
-  transition: visibility 0s linear 400ms, opacity linear 4s;
+  transition: visibility 0s linear 400ms, opacity linear .4s;
 }

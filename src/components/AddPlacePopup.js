@@ -1,46 +1,44 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm.js';
 import FormInput from './FormInput.js';
-import { CurrentInputContext, currentInputs } from '../contexts/CurrentInputContext.js';
 
 function AddPlacePopup(props) {
-	const [cardTitle, setCardTitle] = React.useState('');
-  const [cardLink, setCardLink] = React.useState('');
+  const title = React.useRef('');
+  const url = React.useRef('');
 
   React.useEffect(() => {
-    setCardTitle(cardTitle);
-    setCardLink(cardLink);
-  }, [cardTitle, cardLink]);
+     title.current.value = ''
+     url.current.value = ''
+  }, [props.isOpen])
 
   function handleSubmit() {
-		props.onAddCard({ name: cardTitle, link: cardLink });
+		props.onAddCard({
+      name: title.current.value,
+      link: url.current.value
+    });
 	};
-
-  function onTitleChange(evt) {
-    setCardTitle(evt.target.value)
-  }
-
-  function onLinkChange(evt) {
-    setCardLink(evt.target.value)
-  }
 
 	return (
 		<PopupWithForm
 			isOpen={props.isOpen}
 			onSubmit={handleSubmit}
+      name='add'
+      title='New place'
 		>
-      <CurrentInputContext.Provider value={currentInputs.addTitle}>
-        <FormInput
-          onChange={onTitleChange}
-          setInputValue={setCardTitle}
-        />
-      </CurrentInputContext.Provider>
-      <CurrentInputContext.Provider value={currentInputs.addUrl}>
-        <FormInput
-          onChange={onLinkChange}
-          setInputValue={setCardLink}
-        />
-      </CurrentInputContext.Provider>
+      <FormInput
+        type='text'
+        name='title'
+        placeholder='Title'
+        minLength='2'
+        maxLength='30'
+        propsRef={title}
+      />
+      <FormInput
+        type='url'
+        name='url'
+        placeholder='Image link'
+        propsRef={url}
+      />
 		</PopupWithForm>
 	)
 };

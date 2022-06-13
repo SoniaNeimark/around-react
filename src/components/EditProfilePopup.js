@@ -2,17 +2,24 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm.js';
 import FormInput from './FormInput.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
-import { CurrentInputContext, currentInputs } from '../contexts/CurrentInputContext.js';
 
 function EditProfilePopup(props) {
+  const currentUser = React.useContext(CurrentUserContext);
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
-  const currentUser = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
-  }, [currentUser]);
+    setName(currentUser.name)
+    setDescription(currentUser.about)
+  }, [currentUser, props.isOpen])
+
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleAboutChange(e) {
+    setDescription(e.target.value);
+  }
 
   function handleSubmit() {
     props.onUpdateUser({ name: name, about: description });
@@ -22,19 +29,28 @@ function EditProfilePopup(props) {
     <PopupWithForm
       isOpen={props.isOpen}
       onSubmit={handleSubmit}
+      name='profile'
+      title='Edit profile'
     >
-      <CurrentInputContext.Provider value={currentInputs.profileName}>
         <FormInput
           value={name}
           setInputValue={setName}
+          onChange={handleNameChange}
+          type='text'
+          name='name'
+          placeholder='Name'
+          minLength='2'
+          maxLength='40'
         />
-      </CurrentInputContext.Provider>
-      <CurrentInputContext.Provider value={currentInputs.profileAbout}>
         <FormInput
           value={description}
-          setInputValue={setDescription}
+          onChange={handleAboutChange}
+          type='text'
+          name='about'
+          placeholder='About me'
+          minLength='2'
+          maxLength='200'
         />
-      </CurrentInputContext.Provider>
     </PopupWithForm>
   );
 };
