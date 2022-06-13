@@ -1,84 +1,91 @@
-import React from 'react';
-import api from '../utils/api.js';
-import { CurrentUserContext, getCurrentUser } from '../contexts/CurrentUserContext.js';
-import { CurrentPropsContext } from '../contexts/CurrentPropsContext.js';
-import Header from './Header.js';
-import Main from './Main.js';
-import Footer from './Footer.js';
-import ImagePopup from './ImagePopup.js';
-import EditProfilePopup from './EditProfilePopup.js';
-import EditAvatarPopup from './EditAvatarPopup.js';
-import AddPlacePopup from './AddPlacePopup.js';
-import AlertPopup from './AlertPopup.js';
-import Loading from './Loading.js';
-import { useFormAndValidation } from '../hooks/useFormAndValidation.js';
+import React from "react";
+import api from "../utils/api.js";
+import {
+  CurrentUserContext,
+  getCurrentUser,
+} from "../contexts/CurrentUserContext.js";
+import { CurrentPropsContext } from "../contexts/CurrentPropsContext.js";
+import Header from "./Header.js";
+import Main from "./Main.js";
+import Footer from "./Footer.js";
+import ImagePopup from "./ImagePopup.js";
+import EditProfilePopup from "./EditProfilePopup.js";
+import EditAvatarPopup from "./EditAvatarPopup.js";
+import AddPlacePopup from "./AddPlacePopup.js";
+import AlertPopup from "./AlertPopup.js";
+import Loading from "./Loading.js";
+import { useFormAndValidation } from "../hooks/useFormAndValidation.js";
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState(null);
   const [cards, setCards] = React.useState([]);
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
+    React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
+    React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [isAlertPopupOpen, setIsAlertPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
-  const [buttonText, setButtonText] = React.useState('Save');
+  const [buttonText, setButtonText] = React.useState("Save");
   const [buttonOff, setButtonOff] = React.useState(true);
   const currentProps = {
     onClose: closeAllPopups,
     buttonText: buttonText,
     buttonOff: buttonOff,
-    ...useFormAndValidation()
+    ...useFormAndValidation(),
   };
 
   React.useEffect(() => {
-    api.getUserData()
-    .then((data) => {
-      setCurrentUser(getCurrentUser(data));
-    })
-    .catch((err) => console.log(err));
+    api
+      .getUserData()
+      .then((data) => {
+        setCurrentUser(getCurrentUser(data));
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   React.useEffect(() => {
-    api.getInitialCards()
-    .then((data) => {
-      setCards(data);
-    })
-    .catch((err) => console.log(err));
+    api
+      .getInitialCards()
+      .then((data) => {
+        setCards(data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   React.useEffect(() => {
     if (isAddPlacePopupOpen) {
-      setButtonText('Create');
+      setButtonText("Create");
     } else {
       if (isAlertPopupOpen) {
-        setButtonText('Yes');
+        setButtonText("Yes");
       } else {
-        setButtonText('Save');
+        setButtonText("Save");
       }
     }
   }, [isAddPlacePopupOpen, isAlertPopupOpen]);
 
   React.useEffect(() => {
     if (isAlertPopupOpen) {
-      setButtonOff(false)
+      setButtonOff(false);
     } else {
       if (currentProps.isValid) {
-        setButtonOff(false)
+        setButtonOff(false);
       } else {
-        setButtonOff(true)
+        setButtonOff(true);
       }
     }
-  }, [isAlertPopupOpen, currentProps.isValid])
+  }, [isAlertPopupOpen, currentProps.isValid]);
 
   React.useEffect(() => {
     const closeByEscape = (evt) => {
-      if (evt.key === 'Escape') {
+      if (evt.key === "Escape") {
         closeAllPopups();
       }
     };
-    document.addEventListener('keydown', closeByEscape);
-    return () => document.removeEventListener('keydown', closeByEscape);
+    document.addEventListener("keydown", closeByEscape);
+    return () => document.removeEventListener("keydown", closeByEscape);
   }, []);
 
   function closeAllPopups() {
@@ -86,8 +93,8 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsImagePopupOpen(false);
-    setIsAlertPopupOpen(false)
-    currentProps.resetForm()
+    setIsAlertPopupOpen(false);
+    currentProps.resetForm();
   }
 
   function toggleLike(card, isLiked) {
@@ -101,39 +108,40 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some((user) => user._id === currentUser._id);
     toggleLike(card, isLiked)
-    .then((newCard) => {
-      setCards((state) =>
-        state.map((currentCard) =>
-          currentCard._id === card._id ? newCard : currentCard,
-        ),
-      );
-    })
-    .catch((err) => console.log(err));
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleCardDelete(card) {
-    api.deleteCard(card._id)
-    .then(() => {
-      setCards((state) =>
-        state.filter((currentCard) => {
-          return currentCard !== card;
-        }),
-      );
-    })
-    .catch((err) => console.log(err))
-    .finally(() => closeAllPopups())
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        setCards((state) =>
+          state.filter((currentCard) => {
+            return currentCard !== card;
+          })
+        );
+      })
+      .catch((err) => console.log(err))
+      .finally(() => closeAllPopups());
   }
 
   function handleSubmit(updateData, setState) {
     setButtonText(renderLoading(true));
     updateData
-    .then((value) => {
-      setState(value);
-    })
-    .catch((err) => console.log(err))
-    .finally(() => {
-      setButtonText(renderLoading(false, buttonText));
-    });
+      .then((value) => {
+        setState(value);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setButtonText(renderLoading(false, buttonText));
+      });
   }
 
   function handleUpdateAvatar(props) {
@@ -175,7 +183,7 @@ function App() {
 
   function renderLoading(isLoading, buttonText) {
     if (isLoading) {
-      return 'Saving...';
+      return "Saving...";
     } else {
       return buttonText;
     }
@@ -185,7 +193,7 @@ function App() {
     return (
       <CurrentUserContext.Provider value={currentUser}>
         <CurrentPropsContext.Provider value={currentProps}>
-          <div className='page__content'>
+          <div className="page__content">
             <Header />
 
             <Main

@@ -1,6 +1,6 @@
-import React from 'react';
-import Card from './Card.js';
-import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import React from "react";
+import Card from "./Card.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 function Main(props) {
   const currentUser = React.useContext(CurrentUserContext);
@@ -15,48 +15,44 @@ function Main(props) {
   }
 
   return (
-    <main className='main-content'>
-      <section className='profile'>
+    <main className="main-content">
+      <section className="profile">
         <div
-          className='profile__image'
-          id='profile'
+          className="profile__image"
+          id="profile"
           style={{
-            backgroundImage: `url(${currentUser.avatar})`
+            backgroundImage: `url(${currentUser.avatar})`,
           }}
         ></div>
-        <div className='profile__avatar-edit'>
+        <div className="profile__avatar-edit">
           <button
-            className='avatar-edit-button hover-opacity open-popup'
-            type='button'
+            className="avatar-edit-button hover-opacity open-popup"
+            type="button"
             onClick={() => props.setIsEditAvatarPopupOpen()}
           ></button>
         </div>
-        <div className='profile__info'>
-          <div className='profile__title'>
-            <h1 className='profile__name'>
-              {currentUser.name}
-            </h1>
+        <div className="profile__info">
+          <div className="profile__title">
+            <h1 className="profile__name">{currentUser.name}</h1>
             <button
-              className='edit-button hover-opacity open-popup'
-              type='button'
+              className="edit-button hover-opacity open-popup"
+              type="button"
               onClick={() => props.setIsEditProfilePopupOpen()}
             ></button>
           </div>
-          <p className='profile__profession'>
-            {currentUser.about}
-          </p>
+          <p className="profile__profession">{currentUser.about}</p>
         </div>
-        <div className='profile__add-button-wrapper'>
+        <div className="profile__add-button-wrapper">
           <button
-            className='profile__add-button hover-opacity open-popup'
-            type='button'
+            className="profile__add-button hover-opacity open-popup"
+            type="button"
             onClick={() => props.setIsAddPlacePopupOpen()}
           ></button>
         </div>
       </section>
 
-      <section className='elements'>
-        <ul className='elements__cards' id='cards'>
+      <section className="elements">
+        <ul className="elements__cards" id="cards">
           {props.cards.map((card) => (
             <Card
               key={card._id}
