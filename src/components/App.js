@@ -127,9 +127,9 @@ function App() {
             return currentCard !== card;
           })
         );
+        closeAllPopups();
       })
-      .catch((err) => console.log(err))
-      .finally(() => closeAllPopups());
+      .catch((err) => console.log(err));
   }
 
   function handleSubmit(updateData, setState) {
@@ -137,6 +137,7 @@ function App() {
     updateData
       .then((value) => {
         setState(value);
+        closeAllPopups();
       })
       .catch((err) => console.log(err))
       .finally(() => {

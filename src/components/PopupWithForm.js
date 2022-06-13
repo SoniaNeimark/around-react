@@ -11,7 +11,6 @@ function PopupWithForm(props) {
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onSubmit();
-    currentProps.onClose();
   }
 
   return (

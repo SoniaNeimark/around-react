@@ -6,8 +6,9 @@ function ImagePopup(props) {
 
   return (
     <div
-      className={`popup-box popup-box_image popup-box_no-form
-				${props.isOpen ? " popup-box_opened" : ""}`}
+      className={`popup-box popup-box_image popup-box_no-form${
+        props.isOpen ? " popup-box_opened" : ""
+      }`}
       id="image"
       onClick={(evt) => {
         if (evt.currentTarget === evt.target) {
